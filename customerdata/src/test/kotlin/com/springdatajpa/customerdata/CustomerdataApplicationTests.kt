@@ -1,6 +1,6 @@
 package com.springdatajpa.customerdata
 
-import com.springdatajpa.customerdata.dao.Customer
+import com.springdatajpa.customerdata.entities.Customer
 import com.springdatajpa.customerdata.repository.CustomerRepository
 import org.junit.Assert.*
 import org.junit.Test
@@ -44,5 +44,23 @@ class CustomerdataApplicationTests {
 	@Test
 	fun deleteCustomer(){
 		customerRepo.deleteById(1)
+	}
+
+	@Test
+	fun testFindByNameAndEmail(){
+		var customers = customerRepo.findByNameAndEmail("Elias Phiri", "phirielias@gmail.com")
+		customers.forEach{System.out.println(it)}
+	}
+
+	@Test
+	fun testFindByEmailLike(){
+		var customers = customerRepo.findByEmailLike("%elias%")
+		customers.forEach{System.out.println(it)}
+	}
+
+	@Test
+	fun testFindByIdIn(){
+		var customers = customerRepo.findByIdIn(listOf(1,2,3,4))
+		customers.forEach{System.out.println(it)}
 	}
 }
