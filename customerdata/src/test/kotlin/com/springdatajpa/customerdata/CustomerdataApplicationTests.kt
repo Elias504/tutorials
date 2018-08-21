@@ -1,5 +1,6 @@
 package com.springdatajpa.customerdata
 
+import com.springdatajpa.customerdata.entities.Address
 import com.springdatajpa.customerdata.entities.Customer
 import com.springdatajpa.customerdata.repository.CustomerRepository
 import org.junit.Assert.*
@@ -27,20 +28,19 @@ class CustomerdataApplicationTests {
 
 	@Test
 	fun createCustomer(){
-		var customer = Customer(1,"Elias Phiri", "phirielias@gmail.com")
-		customerRepo.save(customer)
+		customerRepo.save(Customer(name = "Elias Phiri", email = "phirielias@gmail.com", address = Address("1582/u Palm Drive, Chelstone", "Lusaka", "Lusaka", "10101", "Zambia")))
 	}
 
 	@Test
 	fun readCustomer(){
-		var customer: Customer = customerRepo.findById(1).get()
+		var customer: Customer = customerRepo.findById(7).get()
 		assertNotNull(customer)
 		assertEquals("Elias Phiri", customer.name)
 	}
 
 	@Test
 	fun updateCustomer(){
-		var customer: Customer = customerRepo.findById(2).get()
+		var customer: Customer = customerRepo.findById(7).get()
 		customer.name = "Beliya Ndlovu"
 
 		customerRepo.save(customer)
@@ -48,7 +48,7 @@ class CustomerdataApplicationTests {
 
 	@Test
 	fun deleteCustomer(){
-		customerRepo.deleteById(1)
+		customerRepo.deleteById(7)
 	}
 
 	@Test

@@ -6,10 +6,11 @@ import javax.persistence.*
 @Table(name = "customer")
 data class Customer (
         @Id
-        // @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.AUTO)
         val id: Long = -1,
         var name: String = "",
-        var email: String = ""
+        var email: String = "",
+        var address: Address? = null
 ){
-        override fun toString(): String = "{id: $id, name: $name, email: $email}"
+        override fun toString(): String = "{id: $id, name: $name, email: $email, streetAddress: ${address?.streetAddress}, city: ${address?.city}, state: ${address?.state}, zipCode: ${address?.zipCode}, country: ${address?.country}}"
 }

@@ -23,11 +23,11 @@ class HibernateinheritanceApplicationTests {
 
 	@Test
 	fun createCardPayment(){
-		paymentRepository.save(Card(1, 10000.00, "123456789"))
+		paymentRepository.save(Card(10000.00, "123456789"))
 	}
 
 	@Test
 	fun createChequePayment(){
-		paymentRepository.save(Cheque(2, 2500.00, "987654321"))
+		paymentRepository.save(Cheque(2500.00, "987654321"))
 	}
 }
